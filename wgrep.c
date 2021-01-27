@@ -73,7 +73,7 @@ int main(int argc,  char *argv[]){
 
     //using the same idea as for reading from a file
     //if argc >= 2 will accept input
-    for(i = 2; i < argc; i++) {
+    if(argc >= 2) {
 
 
         // fgets input line by line
@@ -90,6 +90,6 @@ int main(int argc,  char *argv[]){
         //exit code
         exit(0);
 
-    }//end of for
+    }//end of if
 
 }//end of main function
