@@ -17,26 +17,46 @@
 //start of the main function
 int main(int argc,  char *argv[]){
 
+    int i;
+    char buff[max];
+
+
     //wgrep to read in from a file
     //when argc <=1
     //when no command-line args print "wgrep: searchterm [file...]\n"
+    if(argc <= 1){
+        printf("wgrep: searchterm [file...]\n")
+        exit(1);
+    }//end of if
 
 
-    //when argc >=2
-    //create a file pointer to open and read file
-    //check if pointer is null
-    //if null then print error message
-    //exit with error code 1 when null
+    //when argc =2
+    for(i = 2; i < argc; i++){
 
-    //else fgets input line by line'
-    //using srtsrt() to search the term and return it
+        //create a file pointer to open and read file
+        FILE *fp = fopen(argv[i],"r");
+
+        //check if pointer is null
+        //if null then print error message
+        if( fp = NULL){
+            printf("wgrep: cannot open file\n")
+            exit(1);
+        }//end of if for error
+
+        else{
+
+            //else fgets input line by line'
+            //using srtsrt() to search the term and return it
 
     //close file
 
     //exit with code 0
+    exit(0);
 
 
+        }//end of else
 
+    }//end of for argc = 2
 
 
 
