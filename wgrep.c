@@ -73,17 +73,23 @@ int main(int argc,  char *argv[]){
 
     //using the same idea as for reading from a file
     //if argc >= 2 will accept input
+    for(i = 2; i < argc; i++) {
 
 
-    // fgets input line by line
-    //using srtsrt() to search the term and return it
-    //will run until it is null
+        // fgets input line by line
+        while(fgets(buff, max, stdin) !=NULL) {
+            //using srtsrt() to search the term and return it
+            //will run until it is null
+            if(strstr(buff,argv[1]) != NULL) {
 
-    // print results from input
+                printf("%s\n", buff);
 
+            }//end  of if
+        }//end of while
 
-    //exit code
+        //exit code
+        exit(0);
 
-
+    }//end of for
 
 }//end of main function
