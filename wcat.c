@@ -12,6 +12,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+
+// defined for buffer size
+
+#define max 10000000
+//#define max (1024*1024*1024)
+
 //start of the main function
 
 //pass command lines
@@ -19,7 +25,7 @@ int main(int argc,  char *argv[]){
 
     //loop to invoke each file in turn
     int i;
-    for(i = 1, i < argc; i++) {
+    for(i = 1; i < argc; i++){
 
         //create a file pointer to open and read file
         FILE *fp = fopen(argv[i],"r");
@@ -34,23 +40,28 @@ int main(int argc,  char *argv[]){
 
         }//end of if
 
-        // if true enter else loop
+        // if pointer is not null will enter else loop
+        //
+        else {
+            char buff[max];
 
-        //loop to read line by line until EOF.
 
-        //close file
+
+            //loop to read line by line until EOF.
+            while(fgets(buff, max, fp) !=NULL){
+                printf("%s", buff);
+            }//end of while
+
+            //close file
+            fclose(fp);
+            printf("\n");
+        }//end of else
+
 
     }//end of for loop
 
-                //exit program with code 0
-
-
-
-
-
-
-
-
+    //exit program with code 0
+    exit(0);
 
 
 }//end of main function
