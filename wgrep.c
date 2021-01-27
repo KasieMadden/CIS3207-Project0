@@ -12,7 +12,37 @@
 #include<stdlib.h>
 #include<string.h>
 
+
+
 //start of the main function
-int main() {
+int main(int argc,  char *argv[]){
+
+    //wgrep to read in from a file
+    //when argc <=1
+    //when no command-line args print "wgrep: searchterm [file...]\n"
+
+
+    //when argc >=2
+    //create a file pointer to open and read file
+    //check if pointer is null
+    //if null then print error message
+    //exit with error code 1 when null
+
+    //else fgets input line by line'
+    //using srtsrt() to search the term and return it
+
+    //close file
+
+    //exit with code 0
+
+
+
+
+
+
+
+
+
+
 
 }//end of main function
