@@ -12,6 +12,8 @@
 #include<stdlib.h>
 #include<string.h>
 
+#define max 100000
+
 
 
 //start of the main function
@@ -25,7 +27,7 @@ int main(int argc,  char *argv[]){
     //when argc <=1
     //when no command-line args print "wgrep: searchterm [file...]\n"
     if(argc <= 1){
-        printf("wgrep: searchterm [file...]\n")
+        printf("wgrep: searchterm [file...]\n");
         exit(1);
     }//end of if
 
@@ -38,24 +40,33 @@ int main(int argc,  char *argv[]){
 
         //check if pointer is null
         //if null then print error message
-        if( fp = NULL){
-            printf("wgrep: cannot open file\n")
+        if( fp == NULL){
+            printf("wgrep: cannot open file\n");
             exit(1);
         }//end of if for error
 
         else{
+            //else fgets input line by line
+            while(fgets(buff, max, fp) !=NULL) {
 
-            //else fgets input line by line'
-            //using srtsrt() to search the term and return it
+                //using srtsrt() to search the term and return it
+                //starting array at index 1, using index 0 search term
+                //will run until it is null
+                if(strstr(buff,argv[1]) != NULL){
 
-    //close file
+                    //%s used to print string. print buffer, holds content input
+                    printf("%s\n", buff);
 
-    //exit with code 0
-    exit(0);
+                }//end of if
 
+            }//end of while
 
+            //close file
+            fclose(fp);
         }//end of else
 
+        //exit with code 0
+        exit(0);
     }//end of for argc = 2
 
 
