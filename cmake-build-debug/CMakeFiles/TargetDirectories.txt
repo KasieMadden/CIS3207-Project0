@@ -1,0 +1,3 @@
+C:/Users/kasie/CLionProjects/CIS3207-Project0/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/kasie/CLionProjects/CIS3207-Project0/cmake-build-debug/CMakeFiles/CIS3207_Project0.dir
+C:/Users/kasie/CLionProjects/CIS3207-Project0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
