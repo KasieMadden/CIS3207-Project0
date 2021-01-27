@@ -14,9 +14,8 @@
 
 
 // defined for buffer size
+#define max 100000
 
-#define max 10000000
-//#define max (1024*1024*1024)
 
 //start of the main function
 
@@ -46,10 +45,10 @@ int main(int argc,  char *argv[]){
             char buff[max];
 
 
-
             //loop to read line by line until EOF.
             while(fgets(buff, max, fp) !=NULL){
                 printf("%s", buff);
+                printf("\n");
             }//end of while
 
             //close file
