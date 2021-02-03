@@ -19,12 +19,11 @@
 
 //References used to create a stack of stings:
 //https://stackoverflow.com/questions/1919975/creating-a-stack-of-strings-in-c
-//https://www.geeksforgeeks.org/stack-set-3-reverse-string-using-stack/
 
 
 // Stack structure for node
 struct stackNode{
-    Char *data;
+    char *data;
     struct  stackNode *next;
 
 };//end of stackNode
@@ -32,25 +31,25 @@ struct stackNode{
 
 
 struct stackHead{
-    struck stackNode *head;
+    struct stackNode *head;
     size_t size;
 
 };//end of stackHead
 
-struct stackHead *new(void){
-struct stackHead *stack = malloc(sizeof *stack);
-    if(stack){
-        stack->head = NULL;
-        stack->stackSize = 0;
-    }//end of if stack
-    return stack;
+struct stackHead *newStack(void){
+    struct stackHead *stack = malloc(sizeof *stack);
+        if(stack){
+            stack->head = NULL;
+            stack->size = 0;
+        }//end of if stack
+        return stack;
 
 }//end of *new()
 
 
 //storing a copy of the string
 char *copyline(char *string){
-    char temp = malloc(strlen(string) +1);
+    char *temp = malloc(strlen(string)+1);
     if(temp){
         strcpy(temp, string);
     }
@@ -60,7 +59,7 @@ char *copyline(char *string){
 
 //push function
 void push(struct stackHead *stack, char *value ){
-    struct stack *data = malloc(sizeof *entry);
+    struct stackNode *entry = malloc(sizeof *entry);
     if(entry){
         entry->data = copyline(value);
         entry->next = stack->head;
@@ -103,19 +102,26 @@ int main(int argc,  char *argv[]){
     if(argc == 1){
 
         //initializing for s
-        struct stackHead *sp = stack();
+        struct stackHead *sp = newStack();
         char *string = NULL;
         size_t buff = 0;
-        printf("Input Sting to be reversed: \n")
+
+        printf("Input Sting to be reversed: \n");
+        getline(&string, &buff ,stdin);
 
 
-        getline(buff,string,stdin);
-        While(strcmp(string, " ") != 0){
+        while(strcmp(string, "\n") != 0){
             push(sp, string);
-            getline(buff,string,stdin);
+            getline(&string, &buff ,stdin);
 
         }//end of while
-        fprintf("Output is: %s\n", top(sp));
+
+
+        printf("Output is:\n");
+        while(top(sp) != NULL) {
+            printf("%s",top(sp));
+            pop(sp);
+        }
         exit(0);
 
 
