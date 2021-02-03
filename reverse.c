@@ -97,7 +97,7 @@ void pop(struct stackHead *stack){
 
 int main(int argc,  char *argv[]){
     int i;
-
+/*
     //if no args passed (1)=  stdin -> stdout
     if(argc == 1){
 
@@ -116,7 +116,6 @@ int main(int argc,  char *argv[]){
 
         }//end of while
 
-
         printf("Output is:\n");
         while(top(sp) != NULL) {
             printf("%s",top(sp));
@@ -126,14 +125,42 @@ int main(int argc,  char *argv[]){
 
 
     }//end of if for argc 1
-/*
-    //pass (2) args = stdin -> file
+*/
+    //pass (2) args = file -> stdout
     if(argc == 2){
+
+        FILE *fp = fopen(argv[2],"r");
+        struct stackHead *sp = newStack();
+        char *string = NULL;
+        size_t buff = 0;
+
+        if( fp == NULL){
+            printf("Error: Cannot open file\n");
+            exit(1);
+        }//end of if for error
+        else {
+
+
+            while (getline(&string, &buff, fp) != 0) {
+                push(sp, string);
+                getline(&string, &buff, stdin);
+            }//end of while
+
+            printf("Output is:\n");
+            while (top(sp) != NULL) {
+                printf("%s", top(sp));
+                fputs(top(sp), fp);
+                pop(sp);
+            }//end of while
+
+        }//end  of else
+
+
 
     }//end of argc 2
 
 
-
+/*
     //If (3) args passed = file to file
     if(argc == 3){
 
@@ -142,12 +169,12 @@ int main(int argc,  char *argv[]){
 
 
     // (>3) is an error
-    if(argc > 3){
-        printf()
+    else if(argc > 3){
+        fprintf(stderr,"usage: reverse <input> <output>");
+        exit(1);
 
     }//end of argc >3
-    */
-
+    return 0;
+*/
 }// end of main
 
-//reverse
