@@ -22,7 +22,7 @@ int main(int argc,  char *argv[]){
     int i;
     char buff[max];
 
-/**
+
     //wgrep to read in from a file
     //when argc <=1
     //when no command-line args print "wgrep: searchterm [file...]\n"
@@ -68,7 +68,7 @@ int main(int argc,  char *argv[]){
         //exit with code 0
         exit(0);
     }//end of for argc = 2
-**/
+
 //******************************USING STANDARD INPUT***************************************************
 
     //using the same idea as for reading from a file
