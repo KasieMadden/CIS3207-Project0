@@ -40,8 +40,8 @@ struct stackHead{
 struct stackHead *new(void){
 struct stackHead *stack = malloc(sizeof *stack);
     if(stack){
-        (*stack).head = NULL;
-        (*stack).stackSize = 0;
+        stack->head = NULL;
+        stack->stackSize = 0;
     }//end of if stack
     return stack;
 
@@ -62,46 +62,65 @@ char *copyline(char *string){
 void push(struct stackHead *stack, char *value ){
     struct stack *data = malloc(sizeof *entry);
     if(entry){
-        (*entry).data = copyline(value);
-        (*entry).next = (*stack).head;
-        (*stack).head = entry;
-        (*stack).size++;
+        entry->data = copyline(value);
+        entry->next = stack->head;
+        stack->head = entry;
+        stack->size++;
     }//end of if(entry)
 
 }//end push
+
+char *top( struct stackHead *stack){
+    if(stack && stack->head){
+        return stack->head->data;
+
+    }//end of if
+    else{
+        return NULL;
+    }//end of else
+
+}//end of top
 
 
 //pop function
 void pop(struct stackHead *stack){
     if((*stack).head != NULL){
-        struct stackNode *temp = (*stack).head;
-        (*stack).head =(*(*stack).head).next)));
-        free((*temp).data);
+        struct stackNode *temp = stack->head;
+        stack->head = stack->head->next;
+        free(temp->data);
         free(temp);
-        (*stack).size--;
+        stack->size--;
     }//end of if
-
-
 }
 
-//reverse function
+
 
 
 int main(int argc,  char *argv[]){
-
-
+    int i;
 
     //if no args passed (1)=  stdin -> stdout
     if(argc == 1){
-      //  printf("Input Sting to be reversed: \n");
 
-        While(){
+        //initializing for s
+        struct stackHead *sp = stack();
+        char *string = NULL;
+        size_t buff = 0;
+        printf("Input Sting to be reversed: \n")
+
+
+        getline(buff,string,stdin);
+        While(strcmp(string, " ") != 0){
+            push(sp, string);
+            getline(buff,string,stdin);
 
         }//end of while
-       // printf("Output is: \n");
+        fprintf("Output is: %s\n", top(sp));
+        exit(0);
+
 
     }//end of if for argc 1
-
+/*
     //pass (2) args = stdin -> file
     if(argc == 2){
 
@@ -121,6 +140,7 @@ int main(int argc,  char *argv[]){
         printf()
 
     }//end of argc >3
+    */
 
 }// end of main
 
